@@ -5,6 +5,7 @@ console.log(secretNumber);
 const inputGuess = document.querySelector('.guess');
 const checkButton = document.querySelector('.check');
 let score = 20;
+let highScore = 0;
 
 checkButton.addEventListener('click', function () {
   const guess = Number(inputGuess.value);
@@ -16,6 +17,10 @@ checkButton.addEventListener('click', function () {
     document.querySelector('.message').textContent = 'Correct Number';
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
+    if (score > highScore) {
+      highScore = score;
+      document.querySelector('.highscore').textContent = highScore;
+    }
   } else if (guess > secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = 'Too High';
